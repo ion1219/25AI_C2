@@ -1,11 +1,39 @@
 ﻿// AI_C2.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
+//가로 10 세로 5
 
-#include <iostream>
+#include <stdio.h>
+#include <Windows.h>
+
+void move(int x, int y)
+{
+	COORD pos;
+	pos.X = x;
+	pos.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	int a, x = -1, y = 0;
+	for (a = 0; a < 30; a++) {
+		move(x, y);
+		if (x < 10 && y == 0) {
+			x = x + 1;
+		}
+		else if (x >= 9 && y < 5) {
+			y = y + 1;
+		}
+		else if (x > 0 && y >= 4 ) {
+			x = x - 1;
+		}
+		else if (x <= 0 && y > 0) {
+			y = y - 1;
+		}
+		move(x, y);
+		printf("*");
+		Sleep(100);
+	}
+	move(0, 10);
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
