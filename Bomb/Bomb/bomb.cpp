@@ -3,34 +3,15 @@
 #include <math.h>
 #include <stdlib.h>
 
-void move(int x, int y)
-{
-	COORD pos;
-	pos.X = x;
-	pos.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
-}
+void move(int x, int y);
 
-void clearScreen() {
-	system("cls");
-}
+void clearScreen();
 
-void delay(int ms) {
-	Sleep(ms);
-}
+void delay(int ms);
 
-void setColor(int color) {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, color);
-}
+void setColor(int color);
 
-void printFrame(const char* frame[], int lines, int color) {
-	setColor(color);
-	for (int i = 0; i < lines; i++) {
-		printf("%s\n", frame[i]);
-	}
-	setColor(7); // reset to white
-}
+void printFrame(const char* frame[], int lines, int color);
 
 int main()
 {
@@ -42,17 +23,8 @@ int main()
 	for (i = 0; i < 9; i++)
 	{
 		lx = cos(angle * Pi / 180);
-		if (lx) {
-			line = 5;
-			move(x, y);
-			if (t != 0) {
-				printf("+");
-			}
-		}
-		else {
-			line = 0;
-			move(x, y);
-			printf("+");
+		if (!lx)
+		{
 			length--;
 		}
 		ly = sin(angle * Pi / 180.0);
@@ -62,45 +34,44 @@ int main()
 			x += lx;
 			y += ly;
 			move(x, y);
-			if (t == 25) {
+			printf("#");
+			x += lx;
+			y += ly;
+			move(x, y);
+			if (t == 25)
+			{
 				printf("*");
 			}
-			else if (((int)angle / 90) % 2 == 1) {
-				printf("I");
-			}
-			else {
-				printf("-");
+			else
+			{
+				printf("#");
 			}
 			Sleep(100);
 		}
 		angle += 90;
 	}
+	Sleep(400);
 	angle = 0;
-	//move(0, 10);
-	//printf("%.2f", angle);
 	t = 0;
 	for (i = 0; i < 9; i++)
 	{
 		lx = cos(angle * Pi / 180);
-		if (lx) {
-			line = 5;
-			move(x, y);
-			printf("*");
-			move(x, y);
-			if(t > 0)
-				length++;
-		}
-		else {
-			line = 0;
-			move(x, y);
-			printf("*");
-			move(x, y);
-
+		if (lx && t > 0) { 	
+			length++;
 		}
 		ly = sin(angle * Pi / 180.0);
 		for (j = 0; j < length; j++)
 		{
 			t++;
+			move(x, y);
+			printf(" ");
+			move(x, y);
+			x -= lx;
+			y -= ly;
+			move(x, y);
+			printf("*");
+			move(x, y);
+			Sleep(100);
 			move(x, y);
 			printf(" ");
 			move(x, y);
@@ -230,4 +201,33 @@ int main()
 	return 0;
 
 	move(0, 50);
+}
+
+void move(int x, int y)
+{
+	COORD pos;
+	pos.X = x;
+	pos.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+void clearScreen() {
+	system("cls");
+}
+
+void delay(int ms) {
+	Sleep(ms);
+}
+
+void setColor(int color) {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, color);
+}
+
+void printFrame(const char* frame[], int lines, int color) {
+	setColor(color);
+	for (int i = 0; i < lines; i++) {
+		printf("%s\n", frame[i]);
+	}
+	setColor(7); // reset to white
 }
