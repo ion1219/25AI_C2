@@ -15,7 +15,7 @@ void printFrame(const char* frame[], int lines, int color);
 
 int main()
 {
-	int line = 5, i = 0, j = 0, x = 0, y = 0, lx = 0, ly = 0, length = 5;
+	int i = 0, j = 0, x = 0, y = 0, lx = 0, ly = 0, length = 5;
 	int t = 0;
 	double Pi = 3.1415926535897979323, angle = 0;
 	printf("(Bomb)");

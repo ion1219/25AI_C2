@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <Windows.h>
 #include <math.h>
 #include <stdlib.h>
@@ -18,12 +18,12 @@ int main()
 	int i = 0, j = 0, x = 0, y = 0, lx = 0, ly = 0, length = 5;
 	int t = 0;
 	double Pi = 3.1415926535897979323, angle = 0;
-	printf("(Bomb)");
-	x = 5, y = 0;
-	for (i = 0; i < 9; i++)
+	printf("(Bomb)#");
+	x = 6, y = 0;
+	for (i = 0; i < 11; i++)
 	{
 		lx = cos(angle * Pi / 180);
-		if (!lx)
+		if (!lx && t > 10 )
 		{
 			length--;
 		}
@@ -53,7 +53,7 @@ int main()
 	Sleep(400);
 	angle = 0;
 	t = 0;
-	for (i = 0; i < 9; i++)
+	for (i = 0; i < 11; i++)
 	{
 		lx = cos(angle * Pi / 180);
 		if (lx && t > 0) {
