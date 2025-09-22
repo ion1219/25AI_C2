@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e0041778-229a-4723-9913-fa7c2c3e0aec}</ProjectGuid>
-    <RootNamespace>Bomb</RootNamespace>
+    <ProjectGuid>{b5289640-ac88-4c7f-8d0b-83400934e102}</ProjectGuid>
+    <RootNamespace>Lecture04</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bomb.cpp" />
+    <ClCompile Include="Lecture04.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
