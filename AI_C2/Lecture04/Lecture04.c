@@ -36,7 +36,6 @@ int main()
 			if (index[i] == j)
 			{
 				isIn = i;
-				break;
 			}
 		}
 		result[j] = isIn;
